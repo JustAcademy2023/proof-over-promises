@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof Over Promises — How Real Projects Get Freshers Hired</title>
+<meta name="description" content="Freshers don't need more certificates. They need proof. A field guide to the bootcamps, courses and reading that turn IT job hunts around, from JustAcademy Pune.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14213D;
+    --ink-soft:#2B3B60;
+    --paper:#F3EEDF;
+    --paper-dim:#EAE3CE;
+    --gold:#C89B3C;
+    --gold-deep:#9C7727;
+    --teal:#2F6F62;
+    --line-on-paper: rgba(20,33,61,0.14);
+    --line-on-ink: rgba(243,238,223,0.16);
+    --max: 1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top: 90px;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- top nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(20,33,61,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{color:var(--paper); font-size:15px; letter-spacing:0.02em; display:flex; align-items:baseline; gap:8px;}
+  .brand b{font-family:'Fraunces', serif; font-weight:700; font-size:18px;}
+  .brand span{color:var(--gold); font-size:12px;}
+  .nav-links{display:flex; gap:26px; font-size:13px; color:var(--paper);}
+  .nav-links a{opacity:0.82; border-bottom:1px solid transparent; padding-bottom:3px; transition:opacity .2s, border-color .2s;}
+  .nav-links a:hover{opacity:1; border-color:var(--gold);}
+  .nav-cta{
+    font-size:13px; color:var(--ink); background:var(--gold);
+    padding:9px 16px; border-radius:2px; white-space:nowrap;
+  }
+  .nav-cta:hover{background:#DAB25A;}
+  .menu-btn{display:none; background:none; border:1px solid var(--line-on-ink); color:var(--paper); width:38px; height:38px; border-radius:2px; cursor:pointer; font-size:16px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(20,33,61,0) 0%, rgba(20,33,61,0.0) 60%, var(--paper) 100%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--line-on-ink) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--line-on-ink) 40px),
+      var(--ink);
+    color:var(--paper);
+    padding:96px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:18px;
+    border:1px solid var(--line-on-ink);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:""; position:absolute; width:14px; height:14px;
+    border-left:2px solid var(--gold); border-top:2px solid var(--gold);
+    top:18px; left:18px;
+  }
+  .corner-br{position:absolute; width:14px; height:14px; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); bottom:18px; right:18px;}
+  .tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:12.5px; color:var(--gold); letter-spacing:0.03em;
+    margin-bottom:26px;
+  }
+  .tag i{display:inline-block; width:6px; height:6px; background:var(--gold); border-radius:50%;}
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 68px);
+    max-width:15ch;
+    color:var(--paper);
+  }
+  .hero h1 em{font-style:italic; color:var(--gold);}
+  .hero-sub{
+    max-width:56ch; margin-top:26px; font-size:16px; color:#D8D2BE; line-height:1.75;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px;}
+  .btn-solid{
+    background:var(--gold); color:var(--ink); font-size:14px; padding:14px 24px;
+    border-radius:2px; transition:transform .15s, background .2s;
+    display:inline-block;
+  }
+  .btn-solid:hover{background:#DAB25A; transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line-on-ink); color:var(--paper); font-size:14px; padding:14px 24px;
+    border-radius:2px; transition:border-color .2s, background .2s;
+    display:inline-block;
+  }
+  .btn-ghost:hover{border-color:var(--gold); background:rgba(200,155,60,0.08);}
+  .hero-stats{
+    display:flex; gap:44px; margin-top:64px; flex-wrap:wrap;
+    border-top:1px solid var(--line-on-ink); padding-top:28px;
+  }
+  .hero-stats div b{font-family:'Fraunces', serif; font-size:30px; color:var(--gold); display:block; font-weight:600;}
+  .hero-stats div span{font-size:12.5px; color:#B9B29A;}
+
+  /* ---------- section shells ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:62ch; margin-bottom:56px;}
+  .kicker{font-size:12.5px; color:var(--teal); margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(28px, 3.4vw, 40px);}
+  .section-head p{margin-top:18px; font-size:15.5px; color:var(--ink-soft); line-height:1.75;}
+
+  /* ---------- problem / notes ---------- */
+  .problem{display:grid; grid-template-columns: 1.1fr 0.9fr; gap:64px; align-items:start;}
+  .problem-copy p{font-size:15.5px; color:var(--ink-soft); line-height:1.85;}
+  .problem-copy p + p{margin-top:18px;}
+  .notes{display:flex; flex-direction:column;}
+  .note{padding:22px 0; border-top:1px solid var(--line-on-paper);}
+  .note:last-child{border-bottom:1px solid var(--line-on-paper);}
+  .note b{font-family:'Fraunces', serif; font-size:20px; font-weight:600; display:block; margin-bottom:6px;}
+  .note span{font-size:13.5px; color:var(--ink-soft);}
+
+  /* ---------- build log / programs ---------- */
+  .buildlog{background:var(--paper-dim); border-top:1px solid var(--line-on-paper); border-bottom:1px solid var(--line-on-paper);}
+  .log-row{
+    display:grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items:center;
+    gap:24px;
+    padding:28px 0;
+    border-top:1px solid var(--line-on-paper);
+    transition:background .2s, padding-left .2s;
+  }
+  .log-row:last-child{border-bottom:1px solid var(--line-on-paper);}
+  .log-row:hover{background:rgba(200,155,60,0.09); padding-left:10px;}
+  .log-code{
+    font-size:13px; color:var(--gold-deep); font-weight:600; letter-spacing:0.02em;
+  }
+  .log-body h3{font-family:'Fraunces', serif; font-size:22px; font-weight:600; margin-bottom:6px;}
+  .log-body p{font-size:13.8px; color:var(--ink-soft);}
+  .log-arrow{
+    font-size:22px; color:var(--ink); opacity:0.35; transition:opacity .2s, transform .2s;
+  }
+  .log-row:hover .log-arrow{opacity:1; transform:translateX(4px); color:var(--gold-deep);}
+  .log-row a.stretch{position:absolute; inset:0;}
+  .log-row{position:relative;}
+
+  /* ---------- reading room ---------- */
+  .reading{background:var(--ink); color:var(--paper);}
+  .reading .section-head p{color:#C9C3AE;}
+  .reading .kicker{color:var(--gold);}
+  .read-grid{display:grid; grid-template-columns: repeat(2, 1fr); gap:1px; background:var(--line-on-ink); border:1px solid var(--line-on-ink);}
+  .read-card{background:var(--ink); padding:32px; position:relative; transition:background .2s;}
+  .read-card:hover{background:#1B2A4A;}
+  .read-mark{width:9px; height:9px; border-radius:50%; background:var(--teal); margin-bottom:18px;}
+  .read-card h3{font-family:'Fraunces', serif; font-size:19px; font-weight:600; max-width:34ch; color:var(--paper);}
+  .read-card p{font-size:13.5px; color:#B9B29A; margin-top:12px; max-width:38ch;}
+  .read-card .go{font-size:12.5px; color:var(--gold); margin-top:20px; display:inline-block;}
+  .read-card a.stretch{position:absolute; inset:0;}
+  .read-card{position:relative;}
+
+  /* ---------- tools strip ---------- */
+  .strip{padding:70px 0; border-bottom:1px solid var(--line-on-paper);}
+  .strip-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;}
+  .strip h3{font-family:'Fraunces', serif; font-size:24px; max-width:30ch;}
+  .strip-list{display:flex; gap:28px; flex-wrap:wrap; font-size:13px; color:var(--ink-soft);}
+  .strip-list span{border-bottom:1px dashed var(--line-on-paper); padding-bottom:2px;}
+
+  /* ---------- cta band ---------- */
+  .band{
+    background:var(--gold);
+    color:var(--ink);
+    padding:80px 0;
+    text-align:left;
+  }
+  .band-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:30px;}
+  .band h2{font-size:clamp(26px, 3.2vw, 38px); max-width:20ch;}
+  .band p{margin-top:14px; font-size:14.5px; color:#4A3A10; max-width:44ch;}
+  .band .btn-dark{
+    background:var(--ink); color:var(--paper); font-size:14px; padding:16px 28px; border-radius:2px;
+    display:inline-block; transition:transform .15s;
+  }
+  .band .btn-dark:hover{transform:translateY(-2px);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); color:var(--paper); padding:64px 0 28px;}
+  .foot-top{display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid var(--line-on-ink);}
+  .foot-brand b{font-family:'Fraunces', serif; font-size:22px; font-weight:700;}
+  .foot-brand p{font-size:13.5px; color:#B9B29A; margin-top:14px; max-width:32ch; line-height:1.7;}
+  .foot-col h4{font-size:12.5px; color:var(--gold); margin-bottom:16px; font-weight:500;}
+  .foot-col a{display:block; font-size:13.5px; color:#D8D2BE; margin-bottom:11px; opacity:0.9;}
+  .foot-col a:hover{color:var(--gold);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; flex-wrap:wrap; gap:12px; font-size:12px; color:#8C866F;}
+
+  @media (max-width: 860px){
+    .problem{grid-template-columns:1fr;}
+    .read-grid{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns: 1fr 1fr;}
+    .log-row{grid-template-columns: 60px 1fr; row-gap:8px;}
+    .log-arrow{display:none;}
+  }
+  @media (max-width: 600px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .nav-cta{display:none;}
+    .hero{padding:72px 0 80px;}
+    .foot-top{grid-template-columns: 1fr;}
+    .strip-inner{flex-direction:column; align-items:flex-start;}
+    .band-inner{flex-direction:column; align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><b>JustAcademy</b><span>/ Pune Field Notes</span></div>
+    <div class="nav-links">
+      <a href="#problem">The Problem</a>
+      <a href="#buildlog">Programs</a>
+      <a href="#reading">Reading Room</a>
+      <a href="#apply">Get Started</a>
+    </div>
+    <a class="nav-cta" href="https://www.justacademy.co/" target="_blank" rel="noopener">Visit JustAcademy</a>
+    <button class="menu-btn" aria-label="menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="corner-br"></span>
+  <div class="wrap">
+    <span class="tag"><i></i>Field guide for Pune freshers</span>
+    <h1>Freshers don't need <em>more</em> certificates. They need proof.</h1>
+    <p class="hero-sub">Two candidates, same degree, same marks. One built something real and can explain every decision behind it. The other memorised definitions. Only one gets the callback — this page is about becoming that person.</p>
+    <div class="hero-actions">
+      <a class="btn-solid" href="#buildlog">See the programs</a>
+      <a class="btn-ghost" href="https://www.justacademy.co/" target="_blank" rel="noopener">Explore JustAcademy →</a>
+    </div>
+    <div class="hero-stats">
+      <div><b>05</b><span>live, project led programs</span></div>
+      <div><b>1:1</b><span>mentor to doubt ratio, not a video queue</span></div>
+      <div><b>00</b><span>years of prior experience required</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap problem">
+    <div>
+      <span class="kicker">// why the silence happens</span>
+      <h2>Every listing wants experience. Nobody wants to give it first.</h2>
+      <div class="problem-copy" style="margin-top:28px;">
+        <p>Two hundred applications land on one junior opening. Recruiters can't read all of them, so they scan for something that looks different from the pile. A degree doesn't do that anymore. A certificate barely does either.</p>
+        <p>What actually gets noticed is a project you can talk about in specific, unrehearsed detail — the bug that took two days, the design you rebuilt halfway through, the moment it finally worked. That's not luck. That's what live, mentor guided building produces, and it's the whole idea behind every program below.</p>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note"><b>The resume filter</b><span>Same degree, same skills list, same silence. Differentiation beats decoration.</span></div>
+      <div class="note"><b>The experience trap</b><span>You don't need a paycheck to prove capability. You need something you built and can defend.</span></div>
+      <div class="note"><b>The interview tell</b><span>Vague answers signal borrowed knowledge. Specific ones signal ownership.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="buildlog" id="buildlog">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">// the build log</span>
+      <h2>Five ways in, all of them live and mentor led</h2>
+      <p>No recorded queue to fall asleep in. Every program below runs as live, interactive sessions with an instructor who checks your logic, not just your output — and every one ends with a project you actually shipped.</p>
+    </div>
+
+    <div class="log-row">
+      <span class="log-code">FSJ&nbsp;01</span>
+      <div class="log-body">
+        <h3>Full Stack Java Developer Bootcamp</h3>
+        <p>Pune · online, live and interactive · built around real, portfolio ready projects</p>
+      </div>
+      <span class="log-arrow">↗</span>
+      <a class="stretch" href="https://www.justacademy.co/job-bootcamp-detail/pune/full-stack-java-developer-bootcamp-in-pune-online-interactive-training-with-real-projects" target="_blank" rel="noopener" aria-label="Full Stack Java Developer Bootcamp"></a>
+    </div>
+
+    <div class="log-row">
+      <span class="log-code">FSP&nbsp;02</span>
+      <div class="log-body">
+        <h3>Full Stack Python Developer Bootcamp</h3>
+        <p>Pune · live interactive training with Django and React · real projects, not exercises</p>
+      </div>
+      <span class="log-arrow">↗</span>
+      <a class="stretch" href="https://www.justacademy.co/job-bootcamp-detail/pune/full-stack-python-developer-bootcamp-in-pune-live-interactive-training-with-django-react-real-projects" target="_blank" rel="noopener" aria-label="Full Stack Python Developer Bootcamp"></a>
+    </div>
+
+    <div class="log-row">
+      <span class="log-code">SEL&nbsp;03</span>
+      <div class="log-body">
+        <h3>Selenium Training</h3>
+        <p>Pune · build actual automation frameworks, the quieter path into IT with less competition</p>
+      </div>
+      <span class="log-arrow">↗</span>
+      <a class="stretch" href="https://www.justacademy.co/course-detail/pune/selenium-training-in-pune" target="_blank" rel="noopener" aria-label="Selenium Training in Pune"></a>
+    </div>
+
+    <div class="log-row">
+      <span class="log-code">PY&nbsp;&nbsp;04</span>
+      <div class="log-body">
+        <h3>Python Training</h3>
+        <p>Pune · the language that keeps every door open, from web to data to automation</p>
+      </div>
+      <span class="log-arrow">↗</span>
+      <a class="stretch" href="https://www.justacademy.co/course-detail/pune/python-training-in-pune" target="_blank" rel="noopener" aria-label="Python Training in Pune"></a>
+    </div>
+
+    <div class="log-row">
+      <span class="log-code">DA&nbsp;&nbsp;05</span>
+      <div class="log-body">
+        <h3>Data Analytics Course</h3>
+        <p>Pune · online, interactive, built on real world datasets that never behave in class</p>
+      </div>
+      <span class="log-arrow">↗</span>
+      <a class="stretch" href="https://www.justacademy.co/job-bootcamp-detail/pune/data-analytics-course-in-pune-online-interactive-training-with-real-world-projects" target="_blank" rel="noopener" aria-label="Data Analytics Course in Pune"></a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip-inner">
+    <h3>Practical skill, not just a syllabus line</h3>
+    <div class="strip-list">
+      <span>Real world experience</span>
+      <span>Industry exposure</span>
+      <span>Hands on projects</span>
+      <span>Mentor feedback</span>
+      <span>Interview practice</span>
+      <span>Portfolio ready work</span>
+    </div>
+  </div>
+</div>
+
+<section class="reading" id="reading">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">// the reading room</span>
+      <h2>Four short reads worth ten minutes each</h2>
+      <p>Before you pick a path, it helps to know what the market is actually asking for. These are the notes most Pune freshers end up reading first.</p>
+    </div>
+    <div class="read-grid">
+      <div class="read-card">
+        <span class="read-mark"></span>
+        <h3>Top IT skills to learn in 2026 for high paying jobs</h3>
+        <p>A snapshot of where demand is actually heading, so you're not learning what companies are already moving away from.</p>
+        <span class="go">Read the note ↗</span>
+        <a class="stretch" href="https://www.justacademy.co/blog-detail/top-it-skills-to-learn-in-2026-for-high-paying-jobs" target="_blank" rel="noopener" aria-label="Top IT skills to learn in 2026"></a>
+      </div>
+      <div class="read-card">
+        <span class="read-mark"></span>
+        <h3>How to become a data analyst without a technical background</h3>
+        <p>An honest roadmap for switching into analytics, no engineering degree required.</p>
+        <span class="go">Read the note ↗</span>
+        <a class="stretch" href="https://www.justacademy.co/blog-detail/how-to-become-a-data-analyst-in-2026-without-a-technical-background" target="_blank" rel="noopener" aria-label="How to become a data analyst without a technical background"></a>
+      </div>
+      <div class="read-card">
+        <span class="read-mark"></span>
+        <h3>Selenium automation testing, a complete beginner guide</h3>
+        <p>The fundamentals of automation testing, explained without the usual jargon overload.</p>
+        <span class="go">Read the note ↗</span>
+        <a class="stretch" href="https://www.justacademy.co/blog-detail/selenium-automation-testing-framework-complete-beginner-guide" target="_blank" rel="noopener" aria-label="Selenium automation testing framework beginner guide"></a>
+      </div>
+      <div class="read-card">
+        <span class="read-mark"></span>
+        <h3>How real projects help freshers get IT jobs</h3>
+        <p>The piece this whole page is built around — why building beats memorising, every single time.</p>
+        <span class="go">Read the note ↗</span>
+        <a class="stretch" href="https://www.justacademy.co/blog-detail/how-real-projects-help-freshers-get-it-jobs" target="_blank" rel="noopener" aria-label="How real projects help freshers get IT jobs"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band" id="apply">
+  <div class="wrap band-inner">
+    <div>
+      <h2>Start where you are, not where you wish you were</h2>
+      <p>No perfect resume required. Just a willingness to build something real and defend it in a room.</p>
+    </div>
+    <a class="btn-dark" href="https://www.justacademy.co/" target="_blank" rel="noopener">Go to JustAcademy →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <b>JustAcademy</b>
+        <p>Live, mentor led, project first training for freshers in Pune who are done waiting for someone to hand them experience.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Programs</h4>
+        <a href="https://www.justacademy.co/job-bootcamp-detail/pune/full-stack-java-developer-bootcamp-in-pune-online-interactive-training-with-real-projects" target="_blank" rel="noopener">Full Stack Java</a>
+        <a href="https://www.justacademy.co/job-bootcamp-detail/pune/full-stack-python-developer-bootcamp-in-pune-live-interactive-training-with-django-react-real-projects" target="_blank" rel="noopener">Full Stack Python</a>
+        <a href="https://www.justacademy.co/course-detail/pune/selenium-training-in-pune" target="_blank" rel="noopener">Selenium Training</a>
+        <a href="https://www.justacademy.co/course-detail/pune/python-training-in-pune" target="_blank" rel="noopener">Python Training</a>
+        <a href="https://www.justacademy.co/job-bootcamp-detail/pune/data-analytics-course-in-pune-online-interactive-training-with-real-world-projects" target="_blank" rel="noopener">Data Analytics</a>
+      </div>
+      <div class="foot-col">
+        <h4>Reading Room</h4>
+        <a href="https://www.justacademy.co/blog-detail/top-it-skills-to-learn-in-2026-for-high-paying-jobs" target="_blank" rel="noopener">Top IT skills, 2026</a>
+        <a href="https://www.justacademy.co/blog-detail/how-to-become-a-data-analyst-in-2026-without-a-technical-background" target="_blank" rel="noopener">Data analyst, no tech background</a>
+        <a href="https://www.justacademy.co/blog-detail/selenium-automation-testing-framework-complete-beginner-guide" target="_blank" rel="noopener">Selenium, beginner guide</a>
+        <a href="https://www.justacademy.co/blog-detail/how-real-projects-help-freshers-get-it-jobs" target="_blank" rel="noopener">Real projects, real jobs</a>
+      </div>
+      <div class="foot-col">
+        <h4>More</h4>
+        <a href="https://www.justacademy.co/" target="_blank" rel="noopener">JustAcademy home</a>
+        <a href="#buildlog">All programs</a>
+        <a href="#reading">All reading</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 JustAcademy, Pune. Built for freshers who'd rather build than wait.</span>
+      <span>Proof &gt; promises</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.menu-btn')?.addEventListener('click', function(){
+    var links = document.querySelector('.nav-links');
+    var visible = links.style.display === 'flex';
+    links.style.display = visible ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '64px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(20,33,61,0.98)';
+    links.style.padding = '20px 28px';
+    links.style.gap = '18px';
+  });
+</script>
+
+</body>
+</html>
